@@ -107,7 +107,7 @@ public class RegisterController {
                 if (exito == true) {
                     System.out.println("usuario agregado exitosamente");
                 }else{
-                    System.out.println("error al agregar usuario");
+                    System.out.println("error al agregar usuario - imposible");
                 }
             }else{
                 System.out.println("email ya registrado");
