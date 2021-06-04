@@ -96,7 +96,7 @@ public class RegisterController {
     @FXML
     private Hyperlink linkLogin;
 
-    public void setRegisterBoton (ActionEvent event){
+    public void registerButtonAction (ActionEvent event){
         if (emailUsuario.getText().isEmpty()) {
             System.out.println("por favor rellene el correo");
         }else{
