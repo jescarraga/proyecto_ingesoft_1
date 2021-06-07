@@ -16,6 +16,7 @@ public class RegisterController {
 
 
 
+    //hola soy yo
 
     //Verificamos si el usuario ya esta registrado
     public boolean verficarUsuarioBD(String email) {
