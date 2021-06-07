@@ -20,6 +20,6 @@
       <TextField fx:id="emailUsuario" layoutX="169.0" layoutY="188.0" prefHeight="25.0" prefWidth="260.0" promptText="Correo" />
       <PasswordField fx:id="passwordUsuario" layoutX="169.0" layoutY="228.0" prefHeight="25.0" prefWidth="260.0" promptText="Contraseña" />
       <Button fx:id="registerBoton" layoutX="184.0" layoutY="290.0" mnemonicParsing="false" onAction="#registerButtonAction" text="Registrarse" />
-      <Hyperlink fx:id="linkLogin" layoutX="301.0" layoutY="291.0" text="Ya estas registrado?" />
+      <Hyperlink fx:id="linkLogin" layoutX="301.0" layoutY="291.0" onAction="#linkAction" text="Ya estas registrado?" />
    </children>
 </AnchorPane>

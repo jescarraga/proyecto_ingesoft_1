@@ -8,6 +8,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -16,7 +17,7 @@ public class RegisterController {
 
 
 
-    //hola soy yo
+
 
     //Verificamos si el usuario ya esta registrado
     public boolean verficarUsuarioBD(String email) {
@@ -79,6 +80,42 @@ public class RegisterController {
         return exito;
     }
 
+    //Verficar campos
+
+    //Caracteres validos solo nombre
+    public boolean verificar_letra(int ascci){
+        boolean esLetra = false;
+
+        if ((ascci >= 65 && ascci <= 90) || (ascci >= 97 && ascci <= 122) || (ascci >= 128 && ascci <= 154)
+                || (ascci >= 160 && ascci <= 165) || (ascci >= 181 && ascci <= 183) || (ascci >= 210 && ascci <= 216)
+                || (ascci >= 97 && ascci <= 122) || (ascci == 222) || (ascci == 224) || (ascci >= 226 && ascci <= 229)
+                || (ascci >= 97 && ascci <= 122) || (ascci >= 233 && ascci <= 237)){
+            esLetra = true;
+        }else{
+            esLetra = false;
+        }
+        return esLetra;
+    }
+
+    //Solo permite verificar si posee un nombre o 2 nombres y espacions en blanco
+    public boolean verificar_espacios(String nombre_apellido){
+        boolean correcto = false;
+        String[] b = nombre_apellido.split(" ");
+        int c = b.length;
+        if (c <= 2 && c > 0){
+            System.out.print(c);
+            correcto = true;
+        }
+        return correcto;
+    }
+
+    //verficar correo
+    public boolean vefCorre(String corre){
+
+    }
+
+
+
     @FXML
     private TextField nombreUsuario;
 
@@ -114,6 +151,12 @@ public class RegisterController {
                 System.out.println("email ya registrado");
             }
         }
+    }
+
+    public void linkAction (ActionEvent event){
+        String a = emailUsuario.getText();
+        boolean b = verificar_espacios(a);
+        System.out.println(b);
     }
 
 }
