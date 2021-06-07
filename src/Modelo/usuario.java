@@ -1,5 +1,8 @@
 package Modelo;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -20,6 +23,12 @@ public class usuario {
     }
 
     public usuario(){ }
+
+    public usuario(String email, String firts_name, String last_name) {
+        this.email = email;
+        this.firts_name = firts_name;
+        this.last_name = last_name;
+    }
 
     public int getId_user() {
         return id_user;
@@ -88,4 +97,38 @@ public class usuario {
     return exito;
     }
 
+    public void createCSV(){
+        File myObj = new File("C:/Users/57319/Documents/Ingesoft/proyecto_ingesoft_1/data/usuarios.csv");
+        try {
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        try {
+            FileWriter myWriter = new FileWriter("C:/Users/57319/Documents/Ingesoft/proyecto_ingesoft_1/data/usuarios.csv");
+            myWriter.write(this.getEmail() + ", " + this.getFirts_name() + ", " + this.getLast_name());
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public void elimFile(){
+        File myObj = new File("C:/Users/57319/Documents/Ingesoft/proyecto_ingesoft_1/data/usuarios.csv");
+        if(myObj.delete())
+        {
+            System.out.println("File deleted successfully");
+        }
+        else
+        {
+            System.out.println("Failed to delete the file");
+        }
+    }
 }

@@ -11,7 +11,7 @@ public Connection dataBaseLink;
     // Se pueden intruducir ñ?
 
     public Connection getConnection(){
-        String dataBaseName = "prueba_proyecto";
+        String dataBaseName = "lizzard";
         String dataBaseUser = "root";
         String dataBasePassword = "root";
         String url ="jdbc:mysql://localhost/"+dataBaseName+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
