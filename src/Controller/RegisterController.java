@@ -1,12 +1,11 @@
 package Controller;
 
-import Modelo.DB;
+import DataBase.DB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.apache.commons.lang3.StringUtils;
 
-import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -177,7 +176,7 @@ public class RegisterController {
 
         }
 
-        if ((numArrobas != 1) || (numPuntos != 1) || (bandera!= true) || (email.length() < 5) ||
+        if ((numArrobas != 1) || (numPuntos > 2) || (bandera!= true) || (email.length() < 5) ||
                 ((int)emailArreglo[emailArreglo.length-1] == 64) || ((int)emailArreglo[emailArreglo.length-1] == 46)){
             bandera = false;
             Alert alert = new Alert(Alert.AlertType.WARNING);

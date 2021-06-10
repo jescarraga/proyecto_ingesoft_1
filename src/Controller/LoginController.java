@@ -1,24 +1,22 @@
 package Controller;
 
 
-import Modelo.DB;
-import com.mysql.cj.x.protobuf.MysqlxCrud;
+import DataBase.DB;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-import Modelo.usuario;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 
 public class LoginController {
 
-    public boolean verficarUsuarioBD(String email, String contraseña) {
+    public boolean verficarUsua
+
+    rioBD(String email, String contraseña) {
 
         //Conecta con la DB
         DB connetionNow = new DB();
