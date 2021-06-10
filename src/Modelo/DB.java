@@ -6,12 +6,12 @@ import java.sql.DriverManager;
 public class DB {
 
 public Connection dataBaseLink;
-    // Conectar BD con el usuario y contraseÃ±a roo
+    // Conectar BD con el usuario y contraseña root
     // a la BD se le configura la zona horaria
     // Se pueden intruducir ñ?
 
     public Connection getConnection(){
-        String dataBaseName = "lizzard";
+        String dataBaseName = "prueba_proyecto";
         String dataBaseUser = "root";
         String dataBasePassword = "root";
         String url ="jdbc:mysql://localhost/"+dataBaseName+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";

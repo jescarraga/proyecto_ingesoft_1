@@ -23,7 +23,7 @@ public class RegisterController {
         Connection connectionDB = connetionNow.getConnection();
 
         //SQL sentencia a ejecutar
-        String sqlSentencia = "SELECT count(1) from prueba_proyecto.user where email = '" + email + "'";
+        String sqlSentencia = "SELECT count(1) from user where email = '" + email + "'";
 
         //variable a retornar
         boolean exito = true;
@@ -66,7 +66,7 @@ public class RegisterController {
         Connection connectionDB = connetionNow.getConnection();
 
         //SQL sentencia a ejecutar
-        String sqlSentencia = "INSERT INTO prueba_proyecto.user (EMAIL,FIRST_NAME,LAST_NAME,PASSWORD)"+
+        String sqlSentencia = "INSERT INTO user (EMAIL,FIRST_NAME,LAST_NAME,PASSWORD)"+
                 "VALUES ('"+email+"','"+nombres+"','"+apellidos+"','"+password+"')";
 
         //variable a retornar
@@ -162,7 +162,7 @@ public class RegisterController {
             int ascci = emailArreglo[i];
 
             //verifica que solo tenga minusculas
-            if (ascci >= 97 && ascci <= 122){
+            if ((ascci >= 97 && ascci <= 122) || (ascci >= 48 && ascci <= 57)){
                 // No hace nada pues el número resulto ser una letra minuscula
             }else if(ascci == 64){
                 //Como detecto un @ sumamos 1 al contador de arrobas
