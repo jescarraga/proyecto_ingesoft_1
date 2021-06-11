@@ -1,5 +1,7 @@
 package DataBase;
 
+import javafx.scene.control.Alert;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -23,6 +25,11 @@ public Connection dataBaseLink;
             }catch (Exception connection_fail){
             connection_fail.printStackTrace();
             connection_fail.getCause();
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setHeaderText(null);
+            alerta.setTitle("ERRO BD");
+            alerta.setContentText("Error al conectarse con la base de datos");
+            alerta.showAndWait();
             }
         return dataBaseLink;
     }
