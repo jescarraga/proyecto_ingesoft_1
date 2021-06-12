@@ -34,6 +34,9 @@ public class usuario {
         return id_user;
     }
 
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
 
     public String getEmail() {
         return email;

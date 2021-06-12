@@ -1,5 +1,6 @@
 package Controller;
 
+import Modelo.usuario;
 import Repository.LoginRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +11,8 @@ import javafx.event.ActionEvent;
 
 
 public class LoginController {
+
+    static usuario cliente = new usuario();
 
 
 
@@ -24,7 +27,10 @@ public class LoginController {
 
 
     public void loginButtonAction(ActionEvent event){
-        LoginRepository.verficarUsuarioBD(emailUsuario.getText(), passwordUsuario.getText());
+        if (LoginRepository.verficarUsuarioBD(emailUsuario.getText(), passwordUsuario.getText())){
+            LoginRepository.instanciarUsuario(emailUsuario.getText(),cliente);
+        }
+
     }
 }
 

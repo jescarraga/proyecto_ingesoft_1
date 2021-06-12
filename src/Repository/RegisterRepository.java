@@ -12,19 +12,20 @@ import java.util.Optional;
 
 public class RegisterRepository {
 
-    //Verificamos si el usuario ya esta registrado
+
     private static boolean verificarUsuarioBD(String email) {
-
-        //Conecta con la DB
-        DB connetionNow = new DB();
-        Connection connectionDB = connetionNow.getConnection();
-
-        //SQL sentencia a ejecutar
-        String sqlSentencia = "SELECT count(1) from user where email = '" + email + "'";
 
         //variable a retornar
         boolean exito = true;
         try {
+
+            //Conecta con la DB
+            DB connetionNow = new DB();
+            Connection connectionDB = connetionNow.getConnection();
+
+            //SQL sentencia a ejecutar
+            String sqlSentencia = "SELECT count(1) from user where email = '" + email + "'";
+
             // Ejecuta el comando SQL
             Statement statement = connectionDB.createStatement();
             ResultSet resultadoSQL = statement.executeQuery(sqlSentencia);
@@ -36,6 +37,8 @@ public class RegisterRepository {
                     exito = true;
                 }
             }
+
+            connectionDB.close();
         }catch (Exception validaUsuario){
             validaUsuario.printStackTrace();
             validaUsuario.getCause();
@@ -52,17 +55,17 @@ public class RegisterRepository {
 
     private static void agregarUsuarioBD(String nombres,String apellidos,String email,String password) {
 
-        //Conecta con la DB
-        DB connetionNow = new DB();
-        Connection connectionDB = connetionNow.getConnection();
-
-        //SQL sentencia a ejecutar
-        String sqlSentencia = "INSERT INTO user (EMAIL,FIRST_NAME,LAST_NAME,PASSWORD)"+
-                "VALUES ('"+email+"','"+nombres+"','"+apellidos+"','"+password+"')";
-
-        //variable a retornar
 
         try {
+
+            //Conecta con la DB
+            DB connetionNow = new DB();
+            Connection connectionDB = connetionNow.getConnection();
+
+            //SQL sentencia a ejecutar
+            String sqlSentencia = "INSERT INTO user (EMAIL,FIRST_NAME,LAST_NAME,PASSWORD)"+
+                    "VALUES ('"+email+"','"+nombres+"','"+apellidos+"','"+password+"')";
+
             // Ejecuta el comando SQL
             Statement statement = connectionDB.createStatement();
             statement.executeUpdate(sqlSentencia);
@@ -72,6 +75,8 @@ public class RegisterRepository {
             alert.setTitle("EXITO");
             alert.setContentText("Usuario añadido correctamente a la Base de datos");
             alert.showAndWait();
+
+            connectionDB.close();
 
 
         }catch (Exception validaUsuario){
@@ -88,9 +93,7 @@ public class RegisterRepository {
 
     }
 
-    //Verficar campos
 
-    //Caracteres validos solo nombre y apellidos
     private static boolean verificarLetraNombresApellidos(int ascci){
         boolean esLetra = false;
 
@@ -137,7 +140,7 @@ public class RegisterRepository {
         return banderaFinal;
 
     }
-    //verficar correo
+
     private static boolean verificarEmail(String email){
 
         //Bandera a retornar
@@ -184,7 +187,6 @@ public class RegisterRepository {
 
     }
 
-    //verdificar password
     private static boolean verificarPassword(String password){
         boolean banderaFinal = true;
 
@@ -220,7 +222,7 @@ public class RegisterRepository {
 
 
     }
-    //verificar registro
+
     private static boolean verificarNombreApellido(String nombreOApellido){
 
         boolean bandera = true;
@@ -250,8 +252,6 @@ public class RegisterRepository {
 
     }
 
-
-    //fuinción final versificar login
     private static boolean verificarRegistro(String nombre, String apellido, String email, String password){
 
         boolean bandera = false;
