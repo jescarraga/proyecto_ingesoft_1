@@ -279,7 +279,8 @@ public class RegisterRepository {
                     Alert alerta = new Alert(Alert.AlertType.WARNING);
                     alerta.setHeaderText(null);
                     alerta.setTitle("ADVERTENCIA");
-                    alerta.setContentText("El email ya se encuentra registrado en nuestra BD, por favor inicie sesión o regístrese con un email diferente ");
+                    alerta.setContentText("El email ya se encuentra registrado en nuestra BD," +
+                            " por favor inicie sesión o regístrese con un email diferente ");
                     alerta.showAndWait();
                 }
             }

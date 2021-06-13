@@ -1,6 +1,7 @@
 package Repository;
 
 
+import Controller.FXMLHomeController;
 import Controller.LoginController;
 import javafx.application.Platform;
 import javafx.event.Event;
@@ -47,7 +48,7 @@ public class SceneRepository {
             });
 
         } catch (IOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLHomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

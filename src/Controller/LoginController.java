@@ -39,11 +39,16 @@ public class LoginController {
         if (evt.equals(botonIngresar)){
             if (LoginRepository.verficarUsuarioBD(emailUsuario.getText(), passwordUsuario.getText())){
                 LoginRepository.instanciarUsuario(emailUsuario.getText(),cliente);
+
+                LoginRepository.productoListaGeneral();
+
                 //falta llevar a home
-                Repository.SceneRepository.loadStage("/vista/Register.fxml", event, getClass().getResource("/vista/Register.fxml") );
+                Repository.SceneRepository.loadStage("/vista/FXMLDocument.fxml",
+                        event, getClass().getResource("/vista/FXMLDocument.fxml") );
             }
         }else if(evt.equals(linkRegistrarse)){
-            Repository.SceneRepository.loadStage("/vista/Register.fxml", event, getClass().getResource("/vista/Register.fxml"));
+            Repository.SceneRepository.loadStage("/vista/Register.fxml",
+                    event, getClass().getResource("/vista/Register.fxml"));
         }
 
     }

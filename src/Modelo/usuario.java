@@ -70,4 +70,11 @@ public class usuario {
         this.password = password;
     }
 
+    public void setBlank(){
+        this.id_user = 0;
+        this.email = "";
+        this.firts_name = "";
+        this.last_name = "";
+    }
+
 }
