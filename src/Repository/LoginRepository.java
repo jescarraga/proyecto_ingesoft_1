@@ -84,9 +84,8 @@ public class LoginRepository {
             System.out.println(cliente.getId_user()+"\t"+cliente.getEmail()+"\t"+cliente.getFirts_name()+
                         "\t"+cliente.getLast_name());
 
-
-
             connectionDB.close();
+
         }catch (Exception validaUsuario){
             validaUsuario.printStackTrace();
             validaUsuario.getCause();
