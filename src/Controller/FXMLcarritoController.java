@@ -60,11 +60,7 @@ public class FXMLcarritoController implements Initializable {
 
     @FXML
     private Button BotonReporte;
-    
-    ArrayList<producto> jordan = new ArrayList<producto>();
-   
-    producto hola = new producto("helado","rico");
-    producto hola2 = new producto("pan","no rico");
+
     
      private void loadStage(String url, Event event){
             
@@ -155,7 +151,7 @@ public class FXMLcarritoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        /*
         jordan.add(hola);
         jordan.add(hola2);
         
@@ -170,6 +166,8 @@ public class FXMLcarritoController implements Initializable {
         C_categoria.setCellValueFactory(new PropertyValueFactory<producto, String>("categoria"));
         C_nombre.setCellValueFactory(new PropertyValueFactory<producto, String>("nombre"));
         Htabla.setItems(datos);
+
+         */
     }    
     
 }

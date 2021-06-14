@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="768.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controller.FXMLProductoController">
+<AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FXMLProductoController">
    <children>
       <Pane layoutX="29.0" layoutY="23.0" prefHeight="160.0" prefWidth="718.0">
          <children>
@@ -22,13 +21,13 @@
       </Pane>
       <TableView fx:id="TablaProducto" layoutX="54.0" layoutY="212.0" prefHeight="200.0" prefWidth="669.0">
         <columns>
-          <TableColumn fx:id="C_Tienda" prefWidth="192.0" text="Nombre dela tienda " />
-          <TableColumn fx:id="C_Link" minWidth="5.0" prefWidth="266.0" text="link " />
-            <TableColumn fx:id="C_Precio" prefWidth="167.0" text="precio" />
+          <TableColumn fx:id="C_Tienda" prefWidth="192.0" text="Nombre de la tienda " />
+          <TableColumn fx:id="C_Link" editable="false" minWidth="5.0" prefWidth="116.0" text="link " />
+            <TableColumn fx:id="C_Precio" minWidth="0.0" prefWidth="178.0" text="precio" />
+            <TableColumn fx:id="columnaCarrito" prefWidth="214.0" />
         </columns>
       </TableView>
-      <Button fx:id="BotonCarrito" layoutX="58.0" layoutY="442.0" mnemonicParsing="false" text="Agregar al carrito" />
-      <Button fx:id="BotonReporte" layoutX="187.0" layoutY="442.0" mnemonicParsing="false" text="Generar reporte" />
+      <Button fx:id="BotonReporte" layoutX="54.0" layoutY="442.0" mnemonicParsing="false" text="Generar reporte" />
       <Button fx:id="BotonVolver" layoutX="666.0" layoutY="442.0" mnemonicParsing="false" onAction="#eventAction" text="Volver" />
    </children>
 </AnchorPane>

@@ -95,78 +95,8 @@ public class LoginRepository {
         }
     }
 
-    public static void productoListaCategoria(String categoria){
 
-        try {
 
-            //Conecta con la DB
-            DB connetionNow = new DB();
-            Connection connectionDB = connetionNow.getConnection();
 
-            //SQL sentencia a ejecutar
-            String sqlSentencia = "SELECT * from productos where categoria =" + " '" + categoria + "'";
-
-            // Ejecuta el comando SQL
-            Statement statement = connectionDB.createStatement();
-            ResultSet resultadoSQL = statement.executeQuery(sqlSentencia);
-
-            while (resultadoSQL.next()) {
-                productos.add(new producto(resultadoSQL.getString(3),
-                        resultadoSQL.getString(5)));
-            }
-
-            connectionDB.close();
-
-        }catch (Exception validaUsuario){
-            validaUsuario.printStackTrace();
-            validaUsuario.getCause();
-
-            Alert alerta = new Alert(Alert.AlertType.WARNING);
-            alerta.setHeaderText(null);
-            alerta.setTitle("ADVERTENCIA");
-            alerta.setContentText("Error al conectar con la BD");
-            alerta.showAndWait();
-        }
-
-    }
-
-    public static void productoListaGeneral(){
-
-        try {
-
-            //Conecta con la DB
-            DB connetionNow = new DB();
-            Connection connectionDB = connetionNow.getConnection();
-
-            //SQL sentencia a ejecutar
-            String sqlSentencia = "SELECT * from productos";
-
-            // Ejecuta el comando SQL
-            Statement statement = connectionDB.createStatement();
-            ResultSet resultadoSQL = statement.executeQuery(sqlSentencia);
-
-            int i = 0;
-            while (resultadoSQL.next()) {
-                productos.add(new producto(resultadoSQL.getString(3),
-                        resultadoSQL.getString(5)));
-
-                System.out.println(productos.get(i).getCategoria());
-                i++;
-            }
-
-            connectionDB.close();
-
-        }catch (Exception validaUsuario){
-            validaUsuario.printStackTrace();
-            validaUsuario.getCause();
-
-            Alert alerta = new Alert(Alert.AlertType.WARNING);
-            alerta.setHeaderText(null);
-            alerta.setTitle("ADVERTENCIA");
-            alerta.setContentText("Error al conectar con la BD");
-            alerta.showAndWait();
-        }
-
-    }
 
 }

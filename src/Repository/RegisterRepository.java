@@ -63,8 +63,8 @@ public class RegisterRepository {
             Connection connectionDB = connetionNow.getConnection();
 
             //SQL sentencia a ejecutar
-            String sqlSentencia = "INSERT INTO user (EMAIL,FIRST_NAME,LAST_NAME,PASSWORD)"+
-                    "VALUES ('"+email+"','"+nombres+"','"+apellidos+"','"+password+"')";
+            String sqlSentencia = "INSERT INTO user (ID_ROLE,EMAIL,FIRST_NAME,LAST_NAME,PASSWORD)"+
+                    "VALUES ('"+2+"','"+email+"','"+nombres+"','"+apellidos+"','"+password+"')";
 
             // Ejecuta el comando SQL
             Statement statement = connectionDB.createStatement();

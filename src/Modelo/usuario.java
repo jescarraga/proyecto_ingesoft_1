@@ -10,6 +10,7 @@ import java.sql.Statement;
 public class usuario {
 
     private int id_user;
+    private int id_role;
     private String email;
     private String firts_name;
     private String last_name;
@@ -68,6 +69,14 @@ public class usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId_role() {
+        return id_role;
+    }
+
+    public void setId_role(int id_role) {
+        this.id_role = id_role;
     }
 
     public void setBlank(){

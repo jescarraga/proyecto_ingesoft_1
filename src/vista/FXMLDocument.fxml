@@ -19,10 +19,9 @@
       </MenuButton>
       <TableView fx:id="htabla" layoutX="66.0" layoutY="142.0" prefHeight="378.0" prefWidth="585.0">
         <columns>
-          <TableColumn fx:id="nombre" prefWidth="126.0" text="nombre producto" />
-          <TableColumn fx:id="categoria" prefWidth="117.0" text="categoria" />
-            <TableColumn fx:id="boton1" prefWidth="155.0" />
-            <TableColumn fx:id="boton2" prefWidth="186.0" />
+          <TableColumn fx:id="nombre" prefWidth="272.0" text="nombre producto" />
+          <TableColumn fx:id="categoria" prefWidth="132.0" text="categoria" />
+            <TableColumn fx:id="boton2" prefWidth="180.0" />
         </columns>
       </TableView>
    </children>

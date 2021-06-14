@@ -1,6 +1,7 @@
 package Controller;
 
 import Modelo.usuario;
+import Repository.HomeRepository;
 import Repository.LoginRepository;
 import Repository.SceneRepository;
 import javafx.fxml.FXML;
@@ -40,7 +41,7 @@ public class LoginController {
             if (LoginRepository.verficarUsuarioBD(emailUsuario.getText(), passwordUsuario.getText())){
                 LoginRepository.instanciarUsuario(emailUsuario.getText(),cliente);
 
-                LoginRepository.productoListaGeneral();
+                HomeRepository.productoListaGeneral();
 
                 //falta llevar a home
                 Repository.SceneRepository.loadStage("/vista/FXMLDocument.fxml",

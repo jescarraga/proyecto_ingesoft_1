@@ -40,6 +40,7 @@ import java.util.logging.Logger;
 
 import static Controller.LoginController.cliente;
 import static Repository.HomeRepository.cerrarSesion;
+import static Repository.HomeRepository.llenadoLinks;
 
 
 /**
@@ -50,6 +51,7 @@ public class FXMLHomeController implements Initializable {
 
     static public ArrayList<producto> productos = new ArrayList<producto>();
     static public ObservableList<producto> datos = FXCollections.observableArrayList(productos);
+    static public int indiceProductoEcogido;
     
     @FXML
     private Button homelogout;
@@ -70,8 +72,6 @@ public class FXMLHomeController implements Initializable {
     @FXML
     private  TableColumn<producto, String> categoria;
 
-    @FXML
-    private  TableColumn<producto, String> boton1;
 
     @FXML
     private  TableColumn<producto, String> boton2;
@@ -79,29 +79,29 @@ public class FXMLHomeController implements Initializable {
      
     // evento de botones ya creados en la vista 
     @FXML
-    private void eventAction(ActionEvent event){
+    private void eventAction(ActionEvent event) {
         Object evt = event.getSource();
-        
+
         if (evt.equals(homelogout)){
             SceneRepository.loadStage("/vista/Login.fxml", event,
                     getClass().getResource("/vista/Login.fxml"));
             cerrarSesion();
             productos.clear();
+        }
 
-            if (evt.equals(homecarrito)){
-                SceneRepository.loadStage("/vista/FXMLcarrito.fxml", event,
-                        getClass().getResource("/vista/FXMLcarrito.fxml"));
+        if (evt.equals(homecarrito)){
+            SceneRepository.loadStage("/vista/FXMLcarrito.fxml", event,
+                    getClass().getResource("/vista/FXMLcarrito.fxml"));
 
-                for (int i = 0; i < productos.size(); i++) {
-                    if(evt.equals(productos.get(i).boton2)){
-                        SceneRepository.loadStage("/vista/FXMLproducto.fxml", event,
-                                getClass().getResource("/vista/FXMLproducto.fxml"));
-                    }
+            for (int i = 0; i < productos.size(); i++) {
+                if(evt.equals(productos.get(i).boton2)){
+                    SceneRepository.loadStage("/vista/FXMLproducto.fxml", event,
+                            getClass().getResource("/vista/FXMLproducto.fxml"));
                 }
-
             }
         }
     }
+
 
     private void llenadoCategorias(){
 
@@ -114,9 +114,14 @@ public class FXMLHomeController implements Initializable {
 
             try {
 
+                for (int i = 0; i < productos.size(); i++) {
+                    if (productos.get(i).boton2== event.getSource()){
+                        indiceProductoEcogido = i;
+                        llenadoLinks(indiceProductoEcogido,productos.get(i).getRef());
+                    }
+                }
+
                 //((Node)(event.getSource())).getScene().getWindow().hide();
-
-
                 Object eventSource = event.getSource();
                 Node sourceAsNode = (Node) eventSource ;
                 Scene oldScene = sourceAsNode.getScene();
@@ -131,14 +136,6 @@ public class FXMLHomeController implements Initializable {
                 Stage newStage = new Stage();
                 newStage.setScene(scene);
                 newStage.show();
-
-
-                for (int i = 0; i < productos.size(); i++) {
-                    if (productos.get(i).boton2== event.getSource()){
-                        System.out.println(i+1);
-                    }
-                }
-
 
                 newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                     @Override
@@ -164,7 +161,6 @@ public class FXMLHomeController implements Initializable {
 
         //creacion de la tabla con los produtos
         ObservableList<producto> datos = FXCollections.observableArrayList(productos);
-        boton1.setCellValueFactory(new PropertyValueFactory<producto, String>("boton1"));
         boton2.setCellValueFactory(new PropertyValueFactory<producto, String>("boton2"));
         categoria.setCellValueFactory(new PropertyValueFactory<producto, String>("categoria"));
         nombre.setCellValueFactory(new PropertyValueFactory<producto, String>("nombre"));

@@ -7,25 +7,33 @@ package Modelo;
 
 import javafx.scene.control.Button;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ASUS
  */
 public class producto {
-    
+
+    public int ref;
     public String nombre;
+    public String descripcion;
     public String categoria;
-    public Button boton1;
+
+    public ArrayList<link> links;
+
+
     public Button boton2;
     public Button BotonEliminar;
-    
 
-    public producto(String nombre, String categoria) {
+
+    public producto(int ref, String nombre, String descripcion, String categoria) {
+        this.ref = ref;
         this.nombre = nombre;
+        this.descripcion = descripcion;
         this.categoria = categoria;
-        this.boton1 = new Button ("añadir al carro");
-        this.boton2 = new Button ("ver producto");
-        this.BotonEliminar = new Button ("Eliminar Producto"); 
+        this.boton2 = new Button ("ver producto");;
+        this.BotonEliminar = new Button ("Eliminar Producto");
     }
 
     public Button getBotonEliminar() {
@@ -35,8 +43,6 @@ public class producto {
     public void setBotonEliminar(Button BotonEliminar) {
         this.BotonEliminar = BotonEliminar;
     }
-    
-    
 
     public String getNombre() {
         return nombre;
@@ -54,14 +60,6 @@ public class producto {
         this.categoria = categoria;
     }
 
-    public Button getBoton1() {
-        return boton1;
-    }
-
-    public void setBoton1(Button boton1) {
-        this.boton1 = boton1;
-    }
-
     public Button getBoton2() {
         return boton2;
     }
@@ -69,13 +67,30 @@ public class producto {
     public void setBoton2(Button boton2) {
         this.boton2 = boton2;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public ArrayList<link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(ArrayList<link> links) {
+        this.links = links;
+    }
+
+    public int getRef() {
+        return ref;
+    }
+
+    public void setRef(int ref) {
+        this.ref = ref;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+
 }
