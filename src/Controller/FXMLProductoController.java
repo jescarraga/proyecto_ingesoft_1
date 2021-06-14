@@ -7,6 +7,7 @@ package Controller;
 
 import Modelo.link;
 import Modelo.producto;
+import Repository.ProductoRepository;
 import Repository.SceneRepository;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -38,6 +39,7 @@ import java.util.logging.Logger;
 
 import static Controller.FXMLHomeController.indiceProductoEcogido;
 import static Controller.FXMLHomeController.productos;
+import static Controller.LoginController.cliente;
 
 /**
  * FXML Controller class
@@ -46,7 +48,8 @@ import static Controller.FXMLHomeController.productos;
  */
 public class FXMLProductoController implements Initializable {
 
-    static public ObservableList<link> datos = FXCollections.observableArrayList(productos.get(indiceProductoEcogido).getLinks());
+    ObservableList<link> datos = FXCollections.observableArrayList(productos.get(indiceProductoEcogido).getLinks());
+    public static int idLinkAgregar;
 
      @FXML
     private Label L_Categoria;
@@ -79,10 +82,8 @@ public class FXMLProductoController implements Initializable {
     private TableColumn<link, String> columnaCarrito;
 
 
-    // funcioon
 
-     // eneto de los botones creados en la vista
-     @FXML
+    @FXML
     private void eventAction(ActionEvent event){
         Object evt = event.getSource();
         
@@ -90,25 +91,28 @@ public class FXMLProductoController implements Initializable {
             SceneRepository.loadStage("/vista/FXMLDocument.fxml", event,
                     getClass().getResource("/vista/FXMLDocument.fxml"));
         }
+
+        if (evt.equals(BotonReporte)){
+            System.out.println("Seleccionado reporte inidividual");
+        }
         
     }
 
-    static class ButtonHandler implements EventHandler<ActionEvent>{
+    static class ButtonHandler implements EventHandler<ActionEvent> {
 
         @Override
         public void handle(ActionEvent event) {
 
-            /*
+
             try {
 
-                System.out.println("hola");
+                ProductoRepository.agregarProductoAlCarrito(cliente.getId_user(),
+                        productos.get(indiceProductoEcogido).getLinks().get(idLinkAgregar).getId_link());
 
-            } catch (IOException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(Controller.FXMLHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-             */
-            System.out.println("hola");
         }
 
     }
@@ -118,7 +122,8 @@ public class FXMLProductoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         for (int i = 0; i < productos.get(indiceProductoEcogido).getLinks().size(); i++) {
-            productos.get(indiceProductoEcogido).getLinks().get(i).agregarCarrito.setOnAction(new ButtonHandler());
+            idLinkAgregar= i;
+            productos.get(indiceProductoEcogido).getLinks().get(idLinkAgregar).agregarCarrito.setOnAction(new ButtonHandler());
         }
 
         //creacion de la tabla con los produtos
@@ -128,6 +133,9 @@ public class FXMLProductoController implements Initializable {
         C_Precio.setCellValueFactory(new PropertyValueFactory<link, String>("precio"));
         columnaCarrito.setCellValueFactory(new PropertyValueFactory<link, String>("agregarCarrito"));
         TablaProducto.setItems(datos);
+        L_Descripcion.setText(productos.get(indiceProductoEcogido).getDescripcion());
+        L_NProducto.setText(productos.get(indiceProductoEcogido).getNombre());
+        L_Categoria.setText(productos.get(indiceProductoEcogido).getCategoria());
 
     }
     

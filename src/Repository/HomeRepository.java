@@ -123,15 +123,11 @@ public class HomeRepository {
             Statement statement = connectionDB.createStatement();
             ResultSet resultadoSQL = statement.executeQuery(sqlSentencia);
 
-            int i = 0;
             while (resultadoSQL.next()) {
                 productos.add(new producto(resultadoSQL.getInt(1),
                         resultadoSQL.getString(2),
                         resultadoSQL.getString(3),
                         resultadoSQL.getString(4)));
-
-                System.out.println(productos.get(i).getCategoria());
-                i++;
             }
 
             connectionDB.close();
@@ -167,23 +163,15 @@ public class HomeRepository {
 
 
             while (resultadoSQL.next()) {
-
                 linksProducto.add(new link(resultadoSQL.getInt(1),
                         resultadoSQL.getInt(2),
                         resultadoSQL.getString(4),
                         resultadoSQL.getDouble(5),
                         resultadoSQL.getString(6)));
-
-            }
-
-            for (int i = 0; i < linksProducto.size(); i++) {
-                System.out.println(linksProducto.get(i).isPrecio());
             }
 
             productos.get(indiceLista).setLinks(linksProducto);
 
-            System.out.println(linksProducto.get(0).isPrecio());
-            System.out.println(productos.get(indiceLista).getLinks().get(0).isPrecio());
 
             connectionDB.close();
 

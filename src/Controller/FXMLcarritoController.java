@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Repository.SceneRepository;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,6 +33,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static Repository.HomeRepository.cerrarSesion;
 
 /**
  * FXML Controller class
@@ -140,11 +143,15 @@ public class FXMLcarritoController implements Initializable {
      @FXML
     private void eventAction(ActionEvent event){
         Object evt = event.getSource();
-        
-        if (evt.equals(BotonVolver)){
-            loadStage("/vista/FXMLDocument.fxml", event);
 
-        }
+         if (evt.equals(BotonVolver)){
+             SceneRepository.loadStage("/vista/FXMLDocument.fxml", event,
+                     getClass().getResource("/vista/FXMLDocument.fxml"));
+         }
+
+         if (evt.equals(BotonReporte)){
+             System.out.println("Reporte activo");
+         }
         
     }
     

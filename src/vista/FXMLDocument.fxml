@@ -9,19 +9,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FXMLHomeController">
    <children>
-      <Button fx:id="homelogout" layoutX="681.0" layoutY="23.0" mnemonicParsing="false" onAction="#eventAction" style="-fx-background-color: black;" text="logout" textFill="WHITE" />
-      <Button fx:id="homecarrito" layoutX="128.0" layoutY="23.0" mnemonicParsing="false" onAction="#eventAction" text="carrito" />
-      <MenuButton fx:id="homecategoria" layoutX="25.0" layoutY="23.0" mnemonicParsing="false" onAction="#eventAction" text="categoria">
+      <Button fx:id="homelogout" layoutX="681.0" layoutY="23.0" mnemonicParsing="false" onAction="#eventAction" style="-fx-background-color: black;" text="Logout" textFill="WHITE" />
+      <Button fx:id="homecarrito" layoutX="127.0" layoutY="23.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="25.0" prefWidth="126.0" text="Carrito" textFill="#0f0bff" />
+      <MenuButton fx:id="homecategoria" layoutX="25.0" layoutY="23.0" mnemonicParsing="false" onAction="#eventAction" text="Categoria">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </MenuButton>
-      <TableView fx:id="htabla" layoutX="66.0" layoutY="142.0" prefHeight="378.0" prefWidth="585.0">
+      <TableView fx:id="htabla" layoutX="27.0" layoutY="80.0" prefHeight="476.0" prefWidth="709.0">
         <columns>
-          <TableColumn fx:id="nombre" prefWidth="272.0" text="nombre producto" />
-          <TableColumn fx:id="categoria" prefWidth="132.0" text="categoria" />
-            <TableColumn fx:id="boton2" prefWidth="180.0" />
+          <TableColumn fx:id="nombre" editable="false" prefWidth="445.0" resizable="false" text="Nombre producto" />
+          <TableColumn fx:id="categoria" editable="false" prefWidth="158.0" resizable="false" text="Categoria" />
+            <TableColumn fx:id="boton2" editable="false" prefWidth="105.0" resizable="false" sortable="false" />
         </columns>
       </TableView>
    </children>

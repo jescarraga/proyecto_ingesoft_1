@@ -84,9 +84,6 @@ public class LoginRepository {
             cliente.setFirts_name(resultadoSQL.getString(3));
             cliente.setLast_name(resultadoSQL.getString(4));
 
-            System.out.println(cliente.getId_user()+"\t"+cliente.getEmail()+"\t"+cliente.getFirts_name()+
-                        "\t"+cliente.getLast_name());
-
             connectionDB.close();
 
         }catch (Exception validaUsuario){
