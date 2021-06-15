@@ -1,36 +1,18 @@
 package Repository;
 
-import Controller.FXMLHomeController;
-import Controller.FXMLcarritoController;
-import DataBase.DB;
+import ClaseAuxiliar.DB;
 import Modelo.link;
 import Modelo.producto;
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.stage.WindowEvent;
 
-import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import static Controller.FXMLHomeController.datos;
 import static Controller.FXMLHomeController.productos;
+import static Controller.FXMLProductoController.indicesProductosCarrito;
+import static Controller.FXMLcarritoController.productosCarrito;
 import static Controller.LoginController.cliente;
 
 public class HomeRepository {
@@ -186,6 +168,13 @@ public class HomeRepository {
             alerta.showAndWait();
         }
     }
+
+    public  static void cargarProductosAlCarrito(){
+        for (int i = 0; i < indicesProductosCarrito.size(); i++) {
+            productosCarrito.add(productos.get(indicesProductosCarrito.get(i)));
+        }
+    }
+
 
 
 }

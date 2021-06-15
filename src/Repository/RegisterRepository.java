@@ -1,6 +1,6 @@
 package Repository;
 
-import DataBase.DB;
+import ClaseAuxiliar.DB;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import org.apache.commons.lang3.StringUtils;

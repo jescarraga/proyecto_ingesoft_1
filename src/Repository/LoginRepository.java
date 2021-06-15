@@ -1,7 +1,6 @@
 package Repository;
 
-import DataBase.DB;
-import Modelo.producto;
+import ClaseAuxiliar.DB;
 import Modelo.usuario;
 import javafx.scene.control.Alert;
 
@@ -9,8 +8,6 @@ import javafx.scene.control.Alert;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-import static Controller.FXMLHomeController.productos;
 
 public class LoginRepository {
 

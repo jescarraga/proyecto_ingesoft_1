@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import ClaseAuxiliar.productoCarrito;
+import Modelo.link;
 import Repository.SceneRepository;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -34,7 +36,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static Repository.HomeRepository.cerrarSesion;
 
 /**
  * FXML Controller class
@@ -43,23 +44,28 @@ import static Repository.HomeRepository.cerrarSesion;
  */
 public class FXMLcarritoController implements Initializable {
 
+    static public ArrayList<producto> productosCarrito = new ArrayList<producto>();
+    static public ArrayList<productoCarrito> productosAMostrar = new ArrayList<>();
+    ObservableList<productoCarrito> datosCarrito = FXCollections.observableArrayList(productosAMostrar);
+
    @FXML
     private Button BotonVolver;
 
     @FXML
-    private TableView<producto> Htabla;
+    private TableView<productoCarrito> Htabla;
 
     @FXML
-    private TableColumn<producto, String> C_nombre;
+    private TableColumn<productoCarrito, String> C_nombre;
 
     @FXML
-    private TableColumn<producto, String> C_categoria;
+    private TableColumn<productoCarrito, String> Link;
 
     @FXML
-    private TableColumn<producto, String> C_ver;
+    private TableColumn<productoCarrito, Double> Precio;
+
 
     @FXML
-    private TableColumn<producto, String> C_eliminar;
+    private TableColumn<productoCarrito, String> C_eliminar;
 
     @FXML
     private Button BotonReporte;
@@ -158,23 +164,19 @@ public class FXMLcarritoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        /*
-        jordan.add(hola);
-        jordan.add(hola2);
-        
-         for (int i = 0; i < jordan.size(); i++) {
-           jordan.get(i).boton2.setOnAction(new ButtonHandler());
-        }
-   
-        
-        ObservableList<producto> datos = FXCollections.observableArrayList(jordan);
-        C_ver.setCellValueFactory(new PropertyValueFactory<producto, String>("boton2"));
-        C_eliminar.setCellValueFactory(new PropertyValueFactory<producto, String>("BotonEliminar"));
-        C_categoria.setCellValueFactory(new PropertyValueFactory<producto, String>("categoria"));
-        C_nombre.setCellValueFactory(new PropertyValueFactory<producto, String>("nombre"));
-        Htabla.setItems(datos);
 
-         */
+         for (int i = 0; i < productosAMostrar.size(); i++) {
+             productosAMostrar.get(i).eliminarCarrito.setOnAction(new ButtonHandler());
+         }
+
+         C_nombre.setCellValueFactory(new PropertyValueFactory<productoCarrito, String>("nombreProducto"));
+         Link.setCellValueFactory(new PropertyValueFactory<productoCarrito, String>("link"));
+         Precio.setCellValueFactory(new PropertyValueFactory<productoCarrito, Double>("precio"));
+         C_eliminar.setCellValueFactory(new PropertyValueFactory<productoCarrito, String>("eliminarCarrito"));
+
+         Htabla.setItems(datosCarrito);
+
+
     }    
     
 }

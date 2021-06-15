@@ -40,6 +40,8 @@ import java.util.logging.Logger;
 import static Controller.FXMLHomeController.indiceProductoEcogido;
 import static Controller.FXMLHomeController.productos;
 import static Controller.LoginController.cliente;
+import static Repository.HomeRepository.llenadoLinks;
+import static Repository.ProductoRepository.agregarPorductosAMostrar;
 
 /**
  * FXML Controller class
@@ -50,6 +52,7 @@ public class FXMLProductoController implements Initializable {
 
     ObservableList<link> datos = FXCollections.observableArrayList(productos.get(indiceProductoEcogido).getLinks());
     public static int idLinkAgregar;
+    public static ArrayList<Integer> indicesProductosCarrito = new ArrayList<>();
 
      @FXML
     private Label L_Categoria;
@@ -109,6 +112,23 @@ public class FXMLProductoController implements Initializable {
                 ProductoRepository.agregarProductoAlCarrito(cliente.getId_user(),
                         productos.get(indiceProductoEcogido).getLinks().get(idLinkAgregar).getId_link());
 
+                indicesProductosCarrito.add(indiceProductoEcogido);
+
+                for (int i = 0; i < productos.get(indiceProductoEcogido).getLinks().size(); i++) {
+                    if (productos.get(indiceProductoEcogido).getLinks().get(i).agregarCarrito== event.getSource()){
+                        productos.get(indiceProductoEcogido).getLinks().get(i).setId_user(cliente.getId_user());
+                    }
+                }
+
+                for (int i = 0; i < productos.get(indiceProductoEcogido).getLinks().size(); i++) {
+                    productos.get(indiceProductoEcogido).getLinks().get(i).agregarCarrito.setVisible(false);
+                }
+
+                agregarPorductosAMostrar();
+
+
+
+
             } catch (Exception ex) {
                 Logger.getLogger(Controller.FXMLHomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -123,7 +143,13 @@ public class FXMLProductoController implements Initializable {
 
         for (int i = 0; i < productos.get(indiceProductoEcogido).getLinks().size(); i++) {
             idLinkAgregar= i;
-            productos.get(indiceProductoEcogido).getLinks().get(idLinkAgregar).agregarCarrito.setOnAction(new ButtonHandler());
+            if(indicesProductosCarrito.contains(indiceProductoEcogido)){
+                System.out.println("hola");
+            }else{
+                productos.get(indiceProductoEcogido).getLinks().get(idLinkAgregar).agregarCarrito.setOnAction(new ButtonHandler());
+                columnaCarrito.setCellValueFactory(new PropertyValueFactory<link, String>("agregarCarrito"));
+            }
+
         }
 
         //creacion de la tabla con los produtos
@@ -131,7 +157,7 @@ public class FXMLProductoController implements Initializable {
         C_Tienda.setCellValueFactory(new PropertyValueFactory<link, String>("tienda"));
         C_Link.setCellValueFactory(new PropertyValueFactory<link, String>("link"));
         C_Precio.setCellValueFactory(new PropertyValueFactory<link, String>("precio"));
-        columnaCarrito.setCellValueFactory(new PropertyValueFactory<link, String>("agregarCarrito"));
+
         TablaProducto.setItems(datos);
         L_Descripcion.setText(productos.get(indiceProductoEcogido).getDescripcion());
         L_NProducto.setText(productos.get(indiceProductoEcogido).getNombre());

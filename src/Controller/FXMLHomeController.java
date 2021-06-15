@@ -39,8 +39,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static Controller.LoginController.cliente;
-import static Repository.HomeRepository.cerrarSesion;
-import static Repository.HomeRepository.llenadoLinks;
+import static Repository.HomeRepository.*;
 
 
 /**
@@ -93,6 +92,8 @@ public class FXMLHomeController implements Initializable {
             SceneRepository.loadStage("/vista/FXMLcarrito.fxml", event,
                     getClass().getResource("/vista/FXMLcarrito.fxml"));
 
+            cargarProductosAlCarrito();
+
             for (int i = 0; i < productos.size(); i++) {
                 if(evt.equals(productos.get(i).boton2)){
                     SceneRepository.loadStage("/vista/FXMLproducto.fxml", event,
@@ -103,9 +104,6 @@ public class FXMLHomeController implements Initializable {
     }
 
 
-    private void llenadoCategorias(){
-
-    }
 
     //evento de el boton ver prooducto
     public static class ButtonHandler implements EventHandler<ActionEvent>{

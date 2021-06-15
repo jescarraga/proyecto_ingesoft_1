@@ -1,4 +1,4 @@
-package DataBase;
+package ClaseAuxiliar;
 
 import javafx.scene.control.Alert;
 

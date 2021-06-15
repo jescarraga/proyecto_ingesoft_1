@@ -1,17 +1,16 @@
 package Repository;
 
-import DataBase.DB;
-import Modelo.link;
-import Modelo.producto;
+import ClaseAuxiliar.DB;
+import ClaseAuxiliar.productoCarrito;
 import javafx.scene.control.Alert;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
+import static Controller.FXMLHomeController.indiceProductoEcogido;
 import static Controller.FXMLHomeController.productos;
-import static Controller.LoginController.cliente;
+import static Controller.FXMLProductoController.idLinkAgregar;
+import static Controller.FXMLcarritoController.productosAMostrar;
 
 
 public class ProductoRepository {
@@ -44,6 +43,12 @@ public class ProductoRepository {
             alerta.setContentText("Error al conectar con la BD");
             alerta.showAndWait();
         }
+    }
+
+    public static void agregarPorductosAMostrar(){
+        productosAMostrar.add(new productoCarrito(productos.get(indiceProductoEcogido).getNombre(),
+                productos.get(indiceProductoEcogido).getLinks().get(idLinkAgregar).getLink(),
+                productos.get(indiceProductoEcogido).getLinks().get(idLinkAgregar).getPrecio()));
     }
 
 }
