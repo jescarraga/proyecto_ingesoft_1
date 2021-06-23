@@ -36,6 +36,9 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static Controller.FXMLHomeController.indiceProductoEcogido;
+import static Controller.FXMLHomeController.productos;
+
 
 /**
  * FXML Controller class
@@ -113,7 +116,24 @@ public class FXMLcarritoController implements Initializable {
         public void handle(ActionEvent event) {
             
             try {
-    
+
+                for (int i = 0; i < productosAMostrar.size(); i++) {
+                    if(productosAMostrar.get(i).eliminarCarrito == event.getSource()){
+                        for (int j = 0; j < productos.size(); j++) {
+                            if(productosAMostrar.get(i).getNombreProducto() == productos.get(j).getNombre()) {
+                                for (int k = 0; k < productos.get(j).getLinks().size(); k++) {
+                                    System.out.println(productos.get(j).getLinks().get(k).agregarCarrito.isVisible());
+                                    if(!(productos.get(j).getLinks().get(k).agregarCarrito.isVisible())){
+                                        productos.get(j).getLinks().get(k).agregarCarrito.setVisible(true);
+                                    }
+                                    System.out.println(productos.get(j).getLinks().get(k).agregarCarrito.isVisible());
+                                }
+                            }
+                        }
+                        productosAMostrar.remove(i);
+                    }
+
+                }
            //((Node)(event.getSource())).getScene().getWindow().hide();    
             
             
@@ -126,12 +146,13 @@ public class FXMLcarritoController implements Initializable {
             
            
                         
-            Parent root = FXMLLoader.load(getClass().getResource("/vista/FXMLproducto.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/vista/FXMLcarrito.fxml"));
             Scene scene = new Scene(root);              
             Stage newStage = new Stage();
             newStage.setScene(scene);
             newStage.show();  
-                                    
+
+
             newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {

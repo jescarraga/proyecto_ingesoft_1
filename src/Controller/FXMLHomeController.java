@@ -21,10 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -49,6 +46,8 @@ import static Repository.HomeRepository.*;
 public class FXMLHomeController implements Initializable {
 
     static public ArrayList<producto> productos = new ArrayList<producto>();
+    static public ArrayList<String> nombreCategoria = new ArrayList<>();
+    static public ArrayList<MenuItem> categorias = new ArrayList<>();
     static public ObservableList<producto> datos = FXCollections.observableArrayList(productos);
     static public int indiceProductoEcogido;
     
@@ -149,12 +148,62 @@ public class FXMLHomeController implements Initializable {
 
     }
 
+    public static class ButtonHandler2 implements EventHandler<ActionEvent> {
+        public void handle(ActionEvent event) {
+            try {
+                for (int i = 0; i < categorias.size(); i++) {
+                    if (categorias.get(i) == event.getSource()) {
+                        productoListaCategoria(categorias.get(i).getText());
+                    }
+                }
+
+                //((Node)(event.getSource())).getScene().getWindow().hide();
+                /*Object eventSource = event.getSource();
+                Node sourceAsNode = (Node) eventSource ;
+                Scene oldScene = sourceAsNode.getScene();
+                Window window = oldScene.getWindow();
+                Stage stage = (Stage) window ;
+                stage.hide();*/
+
+
+
+                Parent root = FXMLLoader.load(getClass().getResource("/vista/FXMLDocument.fxml"));
+                Scene scene = new Scene(root);
+                Stage newStage = new Stage();
+                newStage.setScene(scene);
+                newStage.show();
+
+                newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    @Override
+                    public void handle(WindowEvent event) {
+                        Platform.exit();
+                    }
+                });
+
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLHomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //Se llena el MenuButton de tantas categorias como haya en la base de datos
+        homecategoria.getItems().clear();
+        categoriasBoton();
 
         for (int i = 0; i < productos.size(); i++) {
             productos.get(i).boton2.setOnAction(new FXMLHomeController.ButtonHandler());
 
+        }
+
+        for (int i = 0; i < categorias.size(); i++) {
+            categorias.get(i).setOnAction(new ButtonHandler2());
+        }
+        for (int i = 0; i < categorias.size(); i++) {
+            homecategoria.getItems().add(categorias.get(i));
         }
 
         //creacion de la tabla con los produtos

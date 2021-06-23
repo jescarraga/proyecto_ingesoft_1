@@ -4,6 +4,7 @@ import ClaseAuxiliar.DB;
 import Modelo.link;
 import Modelo.producto;
 import javafx.scene.control.Alert;
+import javafx.scene.control.MenuItem;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,6 +12,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import static Controller.FXMLHomeController.productos;
+import static Controller.FXMLHomeController.categorias;
+import static Controller.FXMLHomeController.nombreCategoria;
 import static Controller.FXMLProductoController.indicesProductosCarrito;
 import static Controller.FXMLcarritoController.productosCarrito;
 import static Controller.LoginController.cliente;
@@ -62,11 +65,15 @@ public class HomeRepository {
             Connection connectionDB = connetionNow.getConnection();
 
             //SQL sentencia a ejecutar
-            String sqlSentencia = "SELECT * from productos where categoria =" + " '" + categoria + "'";
+            String sqlSentencia = "SELECT * from producto where categoria =" + " '" + categoria + "'";
 
             // Ejecuta el comando SQL
             Statement statement = connectionDB.createStatement();
             ResultSet resultadoSQL = statement.executeQuery(sqlSentencia);
+
+            productos.clear();
+            categorias.clear();
+            nombreCategoria.clear();
 
             while (resultadoSQL.next()) {
                 productos.add(new producto(resultadoSQL.getInt(1),
@@ -88,6 +95,41 @@ public class HomeRepository {
             alerta.showAndWait();
         }
 
+    }
+
+    public static void categoriasBoton(){
+        try {
+
+            //Conecta con la DB
+            DB connetionNow = new DB();
+            Connection connectionDB = connetionNow.getConnection();
+            //SQL sentencia a ejecutar
+            String sqlSentencia = "SELECT DISTINCT categoria from producto";
+
+            // Ejecuta el comando SQL
+            Statement statement = connectionDB.createStatement();
+            ResultSet resultadoSQL = statement.executeQuery(sqlSentencia);
+
+            while (resultadoSQL.next()) {
+                nombreCategoria.add(resultadoSQL.getString(1));
+            }
+
+            connectionDB.close();
+
+            for (int i = 0; i < nombreCategoria.size(); i++) {
+                categorias.add(new MenuItem(nombreCategoria.get(i)));
+            }
+
+        }catch (Exception validaUsuario){
+            validaUsuario.printStackTrace();
+            validaUsuario.getCause();
+
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setHeaderText(null);
+            alerta.setTitle("ADVERTENCIA");
+            alerta.setContentText("Error al conectar con la BD");
+            alerta.showAndWait();
+        }
     }
 
     public static void productoListaGeneral(){
