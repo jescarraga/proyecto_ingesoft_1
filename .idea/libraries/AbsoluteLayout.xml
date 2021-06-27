@@ -1,0 +1,28 @@
+<component name="libraryTable">
+  <library name="AbsoluteLayout">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/AbsoluteLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/commons-beanutils-1.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/commons-codec-1.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/commons-collections4-4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/commons-digester-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/groovy-all-2.4.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/itext-2.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/itext-pdfa-5.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/itextpdf-5.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/jasperreports-6.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/jfreechart-1.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/poi-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/poi-excelant-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/poi-ooxml-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/poi-ooxml-schemas-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/poi-scratchpad-3.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/Java/JasperReport-6.11/xmlbeans-2.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

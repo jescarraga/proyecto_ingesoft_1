@@ -162,7 +162,7 @@ public class FXMLHomeController implements Initializable {
                 Node sourceAsNode = (Node) eventSource ;
                 Scene oldScene = sourceAsNode.getScene();
                 Window window = oldScene.getWindow();
-                Stage stage = (Stage) window ;
+                Stage stage = (Stage) reportAnchorPane.getScene().getWindow(); ;
                 stage.hide();*/
 
 

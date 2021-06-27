@@ -1,9 +1,17 @@
 package Repository;
 
 import ClaseAuxiliar.DB;
+import ClaseAuxiliar.ProductosDataSource;
 import ClaseAuxiliar.productoCarrito;
 import javafx.scene.control.Alert;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.Statement;
 
@@ -44,6 +52,21 @@ public class ProductoRepository {
             alerta.showAndWait();
         }
     }
+
+    /*public static void ReporteJasper(){
+        try{
+
+            JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reports/Prueba_Reporte.jasper"));
+            JasperPrint jprint = JasperFillManager.fillReport(report,null, ProductosDataSource.getDataSource("Monitor","periferico","pantalla lcd"));
+
+            JasperViewer view = new JasperViewer(jprint,false);
+            view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+
+        }catch(JRException ex){
+            ex.getMessage();
+        }
+    }*/
 
     public static void agregarPorductosAMostrar(){
         productosAMostrar.add(new productoCarrito(productos.get(indiceProductoEcogido).getNombre(),

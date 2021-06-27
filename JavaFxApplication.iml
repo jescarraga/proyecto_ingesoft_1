@@ -18,5 +18,6 @@
     </orderEntry>
     <orderEntry type="library" exported="" name="javafx-mx" level="project" />
     <orderEntry type="library" exported="" name="commons-lang3-3.12.0-javadoc" level="project" />
+    <orderEntry type="library" exported="" name="AbsoluteLayout" level="project" />
   </component>
 </module>

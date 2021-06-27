@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import ClaseAuxiliar.ReporteCarrito;
+import ClaseAuxiliar.ReporteProd;
 import ClaseAuxiliar.productoCarrito;
 import Modelo.link;
 import Repository.SceneRepository;
@@ -177,7 +179,7 @@ public class FXMLcarritoController implements Initializable {
          }
 
          if (evt.equals(BotonReporte)){
-             System.out.println("Reporte activo");
+             ReporteCarrito reporteCarrito = new ReporteCarrito();
          }
         
     }

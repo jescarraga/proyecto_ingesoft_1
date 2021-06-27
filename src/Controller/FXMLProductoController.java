@@ -5,32 +5,31 @@
  */
 package Controller;
 
+import ClaseAuxiliar.ProductosDataSource;
+import ClaseAuxiliar.ReporteProd;
+import ClaseAuxiliar.infoProd;
 import Modelo.link;
-import Modelo.producto;
 import Repository.ProductoRepository;
 import Repository.SceneRepository;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.stage.WindowEvent;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
-import java.io.IOException;
+import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -40,7 +39,6 @@ import java.util.logging.Logger;
 import static Controller.FXMLHomeController.indiceProductoEcogido;
 import static Controller.FXMLHomeController.productos;
 import static Controller.LoginController.cliente;
-import static Repository.HomeRepository.llenadoLinks;
 import static Repository.ProductoRepository.agregarPorductosAMostrar;
 
 /**
@@ -96,7 +94,8 @@ public class FXMLProductoController implements Initializable {
         }
 
         if (evt.equals(BotonReporte)){
-            System.out.println("Seleccionado reporte inidividual");
+
+            ReporteProd reporteProd = new ReporteProd();
         }
         
     }
