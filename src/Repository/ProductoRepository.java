@@ -23,7 +23,6 @@ import static Controller.FXMLcarritoController.productosAMostrar;
 
 public class ProductoRepository {
 
-    public static int flag = 0;
     public static void agregarProductoAlCarrito(int ref, int ref_link){
         try {
 
