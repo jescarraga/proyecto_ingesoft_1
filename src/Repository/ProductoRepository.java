@@ -23,6 +23,7 @@ import static Controller.FXMLcarritoController.productosAMostrar;
 
 public class ProductoRepository {
 
+    public static int flag = 0;
     public static void agregarProductoAlCarrito(int ref, int ref_link){
         try {
 
@@ -53,20 +54,6 @@ public class ProductoRepository {
         }
     }
 
-    /*public static void ReporteJasper(){
-        try{
-
-            JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reports/Prueba_Reporte.jasper"));
-            JasperPrint jprint = JasperFillManager.fillReport(report,null, ProductosDataSource.getDataSource("Monitor","periferico","pantalla lcd"));
-
-            JasperViewer view = new JasperViewer(jprint,false);
-            view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-
-        }catch(JRException ex){
-            ex.getMessage();
-        }
-    }*/
 
     public static void agregarPorductosAMostrar(){
         productosAMostrar.add(new productoCarrito(productos.get(indiceProductoEcogido).getNombre(),

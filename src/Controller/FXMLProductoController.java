@@ -107,26 +107,44 @@ public class FXMLProductoController implements Initializable {
 
 
             try {
+                int x = 0;
+                for (int j = 0; j < productos.get(indiceProductoEcogido).getLinks().size(); j++) {
+                    if(productos.get(indiceProductoEcogido).getLinks().get(j).getAgregarCarrito()== event.getSource() && productos.get(indiceProductoEcogido).getLinks().get(j).getAgregarCarrito().getText().equals("Producto ya agregado")){
+                        System.out.println("mal");
+                        x = 1;
 
-                ProductoRepository.agregarProductoAlCarrito(cliente.getId_user(),
-                        productos.get(indiceProductoEcogido).getLinks().get(idLinkAgregar).getId_link());
+                        break;
+                    }else {
 
-                indicesProductosCarrito.add(indiceProductoEcogido);
 
-                for (int i = 0; i < productos.get(indiceProductoEcogido).getLinks().size(); i++) {
-                    if (productos.get(indiceProductoEcogido).getLinks().get(i).agregarCarrito== event.getSource()){
-                        productos.get(indiceProductoEcogido).getLinks().get(i).setId_user(cliente.getId_user());
+                        for (int i = 0; i < productos.get(indiceProductoEcogido).getLinks().size(); i++) {
+                            if (productos.get(indiceProductoEcogido).getLinks().get(i).getAgregarCarrito() == event.getSource() && x == 0) {
+                                System.out.println(x);
+                                //productos.get(indiceProductoEcogido).getLinks().get(i).getAgregarCarrito().setText("Producto ya agregado");
+                                productos.get(indiceProductoEcogido).getLinks().get(i).getAgregarCarrito().setVisible(false);
+                                idLinkAgregar = i;
+                            }
+                        }
+
+                        if (x == 0) {
+                            ProductoRepository.agregarProductoAlCarrito(cliente.getId_user(),
+                                    productos.get(indiceProductoEcogido).getLinks().get(idLinkAgregar).getId_link());
+
+                            indicesProductosCarrito.add(indiceProductoEcogido);
+                        }
+                        for (int i = 0; i < productos.get(indiceProductoEcogido).getLinks().size(); i++) {
+                            if (productos.get(indiceProductoEcogido).getLinks().get(i).getAgregarCarrito() == event.getSource() && x == 0) {
+                                productos.get(indiceProductoEcogido).getLinks().get(i).setId_user(cliente.getId_user());
+                            }
+                        }
+
+
                     }
                 }
 
-                for (int i = 0; i < productos.get(indiceProductoEcogido).getLinks().size(); i++) {
-                    productos.get(indiceProductoEcogido).getLinks().get(i).agregarCarrito.setVisible(false);
+                if(x == 0) {
+                    agregarPorductosAMostrar();
                 }
-
-                agregarPorductosAMostrar();
-
-
-
 
             } catch (Exception ex) {
                 Logger.getLogger(Controller.FXMLHomeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -141,13 +159,12 @@ public class FXMLProductoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         for (int i = 0; i < productos.get(indiceProductoEcogido).getLinks().size(); i++) {
-            idLinkAgregar= i;
-            if(indicesProductosCarrito.contains(indiceProductoEcogido)){
+
                 System.out.println("hola");
-            }else{
-                productos.get(indiceProductoEcogido).getLinks().get(idLinkAgregar).agregarCarrito.setOnAction(new ButtonHandler());
+
+                productos.get(indiceProductoEcogido).getLinks().get(i).agregarCarrito.setOnAction(new ButtonHandler());
                 columnaCarrito.setCellValueFactory(new PropertyValueFactory<link, String>("agregarCarrito"));
-            }
+
 
         }
 

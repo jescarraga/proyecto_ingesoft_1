@@ -21,6 +21,7 @@ public class link {
         this.tienda = tienda;
 
         this.agregarCarrito = new Button("Agregar al carrito");
+        this.agregarCarrito.setVisible(true);
     }
 
 

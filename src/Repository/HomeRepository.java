@@ -110,6 +110,9 @@ public class HomeRepository {
             Statement statement = connectionDB.createStatement();
             ResultSet resultadoSQL = statement.executeQuery(sqlSentencia);
 
+            categorias.clear();
+            nombreCategoria.clear();
+
             while (resultadoSQL.next()) {
                 nombreCategoria.add(resultadoSQL.getString(1));
             }

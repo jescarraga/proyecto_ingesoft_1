@@ -124,11 +124,11 @@ public class FXMLcarritoController implements Initializable {
                         for (int j = 0; j < productos.size(); j++) {
                             if(productosAMostrar.get(i).getNombreProducto() == productos.get(j).getNombre()) {
                                 for (int k = 0; k < productos.get(j).getLinks().size(); k++) {
-                                    System.out.println(productos.get(j).getLinks().get(k).agregarCarrito.isVisible());
-                                    if(!(productos.get(j).getLinks().get(k).agregarCarrito.isVisible())){
-                                        productos.get(j).getLinks().get(k).agregarCarrito.setVisible(true);
+                                    System.out.println(productos.get(j).getLinks().get(k).getAgregarCarrito().isVisible());
+                                    if(!(productos.get(j).getLinks().get(k).getAgregarCarrito().isVisible())){
+                                        productos.get(j).getLinks().get(k).getAgregarCarrito().setVisible(true);
                                     }
-                                    System.out.println(productos.get(j).getLinks().get(k).agregarCarrito.isVisible());
+                                    System.out.println(productos.get(j).getLinks().get(k).getAgregarCarrito().isVisible());
                                 }
                             }
                         }
