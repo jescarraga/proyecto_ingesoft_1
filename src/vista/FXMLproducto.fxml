@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FXMLProductoController">
+   <children>
+      <Pane layoutX="29.0" layoutY="23.0" prefHeight="160.0" prefWidth="718.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7dce1" height="160.0" stroke="BLACK" strokeType="INSIDE" width="718.0" />
+            <Label fx:id="L_Categoria" layoutX="14.0" layoutY="97.0" prefHeight="27.0" prefWidth="123.0" text="Categoria" />
+            <Label fx:id="L_NProducto" layoutX="14.0" layoutY="14.0" prefHeight="77.0" prefWidth="225.0" text="Nombre del producto " wrapText="true" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="143.0" layoutX="253.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="446.0" />
+            <Label fx:id="L_Descripcion" layoutX="268.0" layoutY="7.0" prefHeight="143.0" prefWidth="417.0" text="Descripcion detallada del producto " wrapText="true" />
+         </children>
+      </Pane>
+      <TableView fx:id="TablaProducto" layoutX="30.0" layoutY="212.0" prefHeight="200.0" prefWidth="693.0">
+        <columns>
+          <TableColumn fx:id="C_Tienda" editable="false" prefWidth="145.0" resizable="false" text="Nombre de la tienda " />
+          <TableColumn fx:id="C_Link" editable="false" minWidth="5.0" prefWidth="315.0" resizable="false" sortable="false" text="Link " />
+            <TableColumn fx:id="C_Precio" editable="false" minWidth="0.0" prefWidth="115.0" resizable="false" text="Precio" />
+            <TableColumn fx:id="columnaCarrito" editable="false" prefWidth="117.0" resizable="false" sortable="false" />
+        </columns>
+      </TableView>
+      <Button fx:id="BotonReporte" layoutX="54.0" layoutY="442.0" mnemonicParsing="false" onAction="#eventAction" text="Generar reporte" />
+      <Button fx:id="BotonVolver" layoutX="666.0" layoutY="442.0" mnemonicParsing="false" onAction="#eventAction" text="Volver" />
+   </children>
+</AnchorPane>

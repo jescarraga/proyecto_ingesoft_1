@@ -1,5 +1,6 @@
-package sample;
+package vista;
 
+import Controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,12 +9,14 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+    public void start(Stage stage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("/vista/Login.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
 
@@ -21,3 +24,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+
